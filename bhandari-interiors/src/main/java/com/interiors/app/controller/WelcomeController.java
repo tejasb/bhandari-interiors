@@ -15,4 +15,12 @@ public class WelcomeController {
 		modelAndView.setViewName("index");
 		return modelAndView;
 	}
+	
+	@RequestMapping(value = "/gallery", method = { RequestMethod.GET, RequestMethod.POST })
+	public ModelAndView gallery(ModelAndView modelAndView)
+	{
+		System.out.println("Inside Gallery Controller");
+		modelAndView.setViewName("Gallery");
+		return modelAndView;
+	}
 }
