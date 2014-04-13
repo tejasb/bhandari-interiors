@@ -51,12 +51,26 @@ span{
 	color: #707070;
 	}
 
-.user{
+.user-guest{
 	height: 60px;
 	width: 159px;
 	float: right;
 	padding: 0px 76px 32px 5px;
 	border:#393939 solid 1px;
+}
+
+.user-login a{
+	height: 23px;
+	/* width: 159px; */
+	float: right;
+	padding: 0px 76px 32px 5px;
+	border:#393939 solid 0.1px;
+	
+	width:auto;
+	font-family:Verdana, Arial, Helvetica, sans-serif;
+	color:#FFFFFF;
+	font-size:16px;
+	text-decoration:none;
 }
 
 .right-nav{
@@ -94,6 +108,20 @@ span{
 	display:block;
 	padding:9px 0px 0px 10px;
 	}
+
+.logout {
+	color:#a5a5a5;
+	/* -- New Properties -- */
+	
+	height:23px;
+	width:auto;
+	font-family:Verdana, Arial, Helvetica, sans-serif;
+	color:#FFFFFF;
+	font-size:16px;
+	text-decoration:none;
+	display:block;
+	padding:9px 0px 0px 10px;
+}
 	
 .header{
 	height:358px;
