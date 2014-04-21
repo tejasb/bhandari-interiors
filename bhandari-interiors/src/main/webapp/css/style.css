@@ -75,7 +75,7 @@ span{
 
 .right-nav{
 	height:38px;
-	width: 510px;
+	/* width: 510px; */
 	float: left;
 	padding: 8px 0px 0px 39px;
 	/* border:#393939 solid 0px; */
@@ -96,7 +96,7 @@ span{
 	}
 	
 .right-nav ul li a{
-	color:#a5a5a5;
+	/* color:#a5a5a5; */
 	/* -- New Properties -- */
 	
 	height:23px;
@@ -239,7 +239,7 @@ span{
 #footer a{
 	color:#ff7800;
 	}
-	
+
 	
 	
 

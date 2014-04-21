@@ -55,15 +55,15 @@
 		</property>
 
 		<property name="url">
-			<value>${databaseURL}</value>
+			<value>jdbc:mysql://localhost/test</value>
 		</property>
 
 		<property name="username">
-			<value>${databaseUserName}</value>
+			<value>admin</value>
 		</property>
 
 		<property name="password">
-			<value>${databasePassword}</value>
+			<value></value>
 		</property>
 
 	</bean>

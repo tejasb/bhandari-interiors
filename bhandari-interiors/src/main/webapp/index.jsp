@@ -13,7 +13,7 @@ pageEncoding="UTF-8"%>
 <link href="css/style.css" rel="stylesheet" type="text/css" />
 <link rel="stylesheet" href="css/slide.css" />
 <link rel="stylesheet" href="css/font-awesome.min.css" />
- <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+<script src="js/jquery-1.9.0.min.js"></script>
  <script src="js/jquery.slides.min.js"></script>
  
    <script>
@@ -47,7 +47,7 @@ pageEncoding="UTF-8"%>
 <div class="header-back">
 <div class="logo-head">
 <div class="logo">
-<a href="index.html"><img src="images/logo.gif" alt="" border="0" /></a>
+<a href="welcome"><img src="images/logo.gif" alt="" border="0" /></a>
 
 <!-- Div End Logo -->
 Welcome <c:choose> <c:when test='${not empty username}'>
@@ -64,7 +64,7 @@ Welcome <c:choose> <c:when test='${not empty username}'>
  
 ${error}</div>  --%>   
 <c:if test="${not empty error}">
-	<scsript>alert("${error}");</scsript>
+	<script>alert("${error}");</script>
 </c:if>
 <form action="j_spring_security_check" method="post" >
 <table>
@@ -94,12 +94,15 @@ ${error}</div>  --%>
 
 <div class="right-nav">
 <ul>
-<li><a class="current">Home</a></li>
+<li><a style="color:#FFA500;">Home</a></li>
  <li><a href="about-us.html">About Us</a></li>
 <li><a href="gallery">Gallery</a></li>
  <li><a href="gallery">Services</a></li>
  <li><a href="support.html">Support</a></li>
   <li><a href="contact-us.html	">Contact Us</a></li>
+  <c:if test="${not empty ROLE && ROLE eq 'ROLE_ADMIN'}">
+	<li><a href="operations">Operations</a></li>
+</c:if>
 </ul>
 
 </div>

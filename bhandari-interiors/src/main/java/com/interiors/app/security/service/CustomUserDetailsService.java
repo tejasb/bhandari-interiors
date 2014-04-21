@@ -3,7 +3,10 @@ package com.interiors.app.security.service;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+
+import javax.annotation.PostConstruct;
  
+import org.springframework.beans.factory.annotation.Autowired;
 //import org.apache.log4j.Logger;
 import org.springframework.dao.DataAccessException;
 import org.springframework.security.core.GrantedAuthority;
@@ -14,7 +17,8 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.interiors.app.security.dao.UserDAO;
+import com.interiors.app.security.dao.UserDAOImpl;
+import com.interiors.app.security.dao.UserDao;
 import com.interiors.app.security.domain.DbUser;
  
 /**
@@ -26,10 +30,24 @@ import com.interiors.app.security.domain.DbUser;
 public class CustomUserDetailsService implements UserDetailsService {
   
  //protected static Logger logger = Logger.getLogger("service");
- 
- private UserDAO userDAO = new UserDAO();
-  
- /**
+
+	@Autowired
+	UserDao userDao;
+	
+	public UserDao getUserDao() {
+		return userDao;
+	}
+	
+	public void setUserDao(UserDao userDao) {
+		this.userDao = userDao;
+	}
+	
+	@PostConstruct
+	public void initIt() throws Exception {
+	  System.out.println("Init method after properties are set Inside CustomUserService: " + userDao);
+	}
+	
+/**
   * Retrieves a user record containing the user's credentials and access. 
   */
  public UserDetails loadUserByUsername(String username)
@@ -44,7 +62,7 @@ public class CustomUserDetailsService implements UserDetailsService {
    // You can provide a custom DAO to access your persistence layer
    // Or use JDBC to access your database
    // DbUser is our custom domain user. This is not the same as Spring's User
-   DbUser dbUser = userDAO.searchDatabase(username);
+   DbUser dbUser = userDao.searchDatabase(username);
     
    // Populate the Spring User object with details from the dbUser
    // Here we just pass the username, password, and access level

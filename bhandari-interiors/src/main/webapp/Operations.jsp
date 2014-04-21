@@ -1,3 +1,10 @@
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
+<%@ taglib uri="http://www.springframework.org/tags" prefix="spring" %>
+ <%@ page isELIgnored="false" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+pageEncoding="UTF-8"%>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -6,7 +13,7 @@
 <link href="css/style.css" rel="stylesheet" type="text/css" />
 <link rel="stylesheet" href="css/slide.css" />
 <link rel="stylesheet" href="css/font-awesome.min.css" />
- <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+ <script src="js/jquery-1.9.0.min.js"></script>
  		<link rel="stylesheet" href="css/prettyPhoto.css" type="text/css" media="screen" title="prettyPhoto main stylesheet" charset="utf-8" />
 		<script src="js/jquery.prettyPhoto.js" type="text/javascript" charset="utf-8"></script>
  <script src="js/jquery.slides.min.js"></script>

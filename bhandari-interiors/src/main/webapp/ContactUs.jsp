@@ -55,40 +55,62 @@
 <div class="header-back">
 <div class="logo-head">
 <div class="logo">
-<a href="index.html"><img src="images/logo.gif" alt="" border="0" /></a>
+<a href="welcome"><img src="images/logo.gif" alt="" border="0" /></a>
 
 <!-- Div End Logo -->
-Welcome Guest!!
+Welcome <c:choose> <c:when test='${not empty username}'>
+	<c:out value='${username}'></c:out>
+</c:when><c:otherwise>Guest!!</c:otherwise></c:choose>
 </div>
 
-<div class="user">
+<c:choose>
+ <c:when test="${empty username}">
+<div class="user-guest">
+<%-- Login
+<div id="login-error">
+ 
+ 
+${error}</div>  --%>   
+<c:if test="${not empty error}">
+	<script>alert("${error}");</script>
+</c:if>
+<form action="j_spring_security_check" method="post" >
 <table>
 	<tr>
-		<td>UserName</td>
-		<td><input type="text"/></td>
+		<td><label for="j_username">Username</label></td>
+		<td><input id="j_username" name="j_username" type="text" /></td>
 	</tr>
 	<tr>
-		<td>Password</td>
-		<td><input type="password"/></td>
+		<td><label for="j_password">Password</label></td>
+		<td><input id="j_password" name="j_password" type="password" /></td>
 	</tr>
 	<tr>
 		<td></td>
-		<td colspan="0" align="right"><input type="submit" name="login" /></td>
+		<td colspan="0" align="right"><input  type="submit" value="Login"/>  </td>
 	</tr>
 </table>
+</form>
 <!-- End Div user -->
 </div>
-
+</c:when>
+<c:otherwise>
+<div class="user-login">
+<span><a href="/bhandari-interiors/logout">Logout</a></span>
+</div>
+</c:otherwise>
+</c:choose>
 
 <div class="right-nav">
 <ul>
-<li><a href="index.html">Home</a></li>
+<li><a class="welcome">Home</a></li>
  <li><a href="about-us.html">About Us</a></li>
-<li><a href="gallery" class="current">Gallery</a></li>
+<li><a href="gallery">Gallery</a></li>
  <li><a href="gallery">Services</a></li>
  <li><a href="support.html">Support</a></li>
-  <li><a href="contact-us.html	">Contact Us</a></li>
+  <li><a  style="color:#FFA500;">Contact Us</a></li>
+    <li><a href="operations">Operations</a></li>
 </ul>
+
 </div>
 
 

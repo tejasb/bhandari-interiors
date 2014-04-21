@@ -14,7 +14,7 @@
 	
 	<mvc:resources mapping="/resources/**" location="/resources/" />
 	
-	<context:component-scan base-package="${base.controller.package}" />
+	<context:component-scan base-package="com.interiors.app.controller" />
 	 <bean name="testManager" class="com.interiors.app.dap.mapper.TestManagerImpl" />
 	
 		<bean
@@ -36,15 +36,15 @@
 		</property>
 
 		<property name="url">
-			<value>${databaseURL}</value>
+			<value>jdbc:mysql://localhost/test</value>
 		</property>
 
 		<property name="username">
-			<value>${databaseUserName}</value>
+			<value>admin</value>
 		</property>
 
 		<property name="password">
-			<value>${databasePassword}</value>
+			<value></value>
 		</property>
 
 	</bean>
@@ -75,15 +75,15 @@
 		</property>
 
 		<property name="url">
-			<value>${databaseURL}</value>
+			<value>jdbc:mysql://localhost/test</value>
 		</property>
 
 		<property name="username">
-			<value>${databaseUserName}</value>
+			<value>admin</value>
 		</property>
 
 		<property name="password">
-			<value>${databasePassword}</value>
+			<value></value>
 		</property>
 
 	</bean>

@@ -1,3 +1,10 @@
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
+<%@ taglib uri="http://www.springframework.org/tags" prefix="spring" %>
+ <%@ page isELIgnored="false" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+pageEncoding="UTF-8"%>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -6,7 +13,7 @@
 <link href="css/style.css" rel="stylesheet" type="text/css" />
 <link rel="stylesheet" href="css/slide.css" />
 <link rel="stylesheet" href="css/font-awesome.min.css" />
- <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+<script src="js/jquery-1.9.0.min.js"></script>
  		<link rel="stylesheet" href="css/prettyPhoto.css" type="text/css" media="screen" title="prettyPhoto main stylesheet" charset="utf-8" />
 		<script src="js/jquery.prettyPhoto.js" type="text/javascript" charset="utf-8"></script>
  <script src="js/jquery.slides.min.js"></script>
@@ -55,7 +62,7 @@
 <div class="header-back">
 <div class="logo-head">
 <div class="logo">
-<a href="index.html"><img src="images/logo.gif" alt="" border="0" /></a>
+<a href="welcome"><img src="images/logo.gif" alt="" border="0" /></a>
 
 <!-- Div End Logo -->
 Welcome <c:choose> <c:when test='${not empty username}'>
@@ -102,13 +109,13 @@ ${error}</div>  --%>
 
 <div class="right-nav">
 <ul>
-<li><a class="current">Home</a></li>
+<li><a href="welcome">Home</a></li>
  <li><a href="about-us.html">About Us</a></li>
 <li><a href="gallery">Gallery</a></li>
  <li><a href="gallery">Services</a></li>
  <li><a href="support.html">Support</a></li>
   <li><a href="contact-us.html	">Contact Us</a></li>
-    <li><a href="operations">Operations</a></li>
+    
 </ul>
 
 </div>
@@ -119,14 +126,7 @@ ${error}</div>  --%>
 
 
 <div class="header">
-			<h2>Gallery</h2>
-			<ul class="gallery clearfix">
-				<li><a href="images/furnitures/slide/example-slide-1.jpg" rel="prettyPhoto[gallery1]" title="You can add caption to pictures. You can add caption to pictures. You can add caption to pictures."><img src="images/furnitures/slide/example-slide-1.jpg" width="60" height="60" alt="Red round shape" /></a></li>
-				<li><a href="images/furnitures/slide/example-slide-2.jpg" rel="prettyPhoto[gallery1]"><img src="images/furnitures/slide/example-slide-2.jpg" width="60" height="60" alt="Nice building" /></a></li>
-				<li><a href="images/furnitures/slide/example-slide-3.jpg" rel="prettyPhoto[gallery1]"><img src="images/furnitures/slide/example-slide-3.jpg" width="60" height="60" alt="Fire!" /></a></li>
-				<li><a href="images/furnitures/slide/example-slide-4.jpg" rel="prettyPhoto[gallery1]"><img src="images/furnitures/slide/example-slide-4.jpg" width="60" height="60" alt="Rock climbing" /></a></li>
-				
-			</ul>
+			<h2>You do not have sufficient privilages to access this page.!!</h2>
 
 			<!-- <h2>Picture alone</h2>
 			<ul class="gallery clearfix">

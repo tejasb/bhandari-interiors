@@ -1,3 +1,10 @@
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
+<%@ taglib uri="http://www.springframework.org/tags" prefix="spring" %>
+ <%@ page isELIgnored="false" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+pageEncoding="UTF-8"%>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -6,7 +13,7 @@
 <link href="css/style.css" rel="stylesheet" type="text/css" />
 <link rel="stylesheet" href="css/slide.css" />
 <link rel="stylesheet" href="css/font-awesome.min.css" />
- <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+<script src="js/jquery-1.9.0.min.js"></script>
  		<link rel="stylesheet" href="css/prettyPhoto.css" type="text/css" media="screen" title="prettyPhoto main stylesheet" charset="utf-8" />
 		<script src="js/jquery.prettyPhoto.js" type="text/javascript" charset="utf-8"></script>
  <script src="js/jquery.slides.min.js"></script>
@@ -55,41 +62,64 @@
 <div class="header-back">
 <div class="logo-head">
 <div class="logo">
-<a href="index.html"><img src="images/logo.gif" alt="" border="0" /></a>
+<a href="welcome"><img src="images/logo.gif" alt="" border="0" /></a>
 
 <!-- Div End Logo -->
-Welcome Guest!!
+Welcome <c:choose> <c:when test='${not empty username}'>
+	<c:out value='${username}'></c:out>
+</c:when><c:otherwise>Guest!!</c:otherwise></c:choose>
 </div>
 
-<div class="user">
+<c:choose>
+ <c:when test="${empty username}">
+<div class="user-guest">
+<%-- Login
+<div id="login-error">
+ 
+ 
+${error}</div>  --%>   
+<c:if test="${not empty error}">
+	<script>alert("${error}");</script>
+</c:if>
+<form action="j_spring_security_check" method="post" >
 <table>
 	<tr>
-		<td>UserName</td>
-		<td><input type="text"/></td>
+		<td><label for="j_username">Username</label></td>
+		<td><input id="j_username" name="j_username" type="text" /></td>
 	</tr>
 	<tr>
-		<td>Password</td>
-		<td><input type="password"/></td>
+		<td><label for="j_password">Password</label></td>
+		<td><input id="j_password" name="j_password" type="password" /></td>
 	</tr>
 	<tr>
 		<td></td>
-		<td colspan="0" align="right"><input type="submit" name="login" /></td>
+		<td colspan="0" align="right"><input  type="submit" value="Login"/>  </td>
 	</tr>
 </table>
+</form>
 <!-- End Div user -->
 </div>
-
+</c:when>
+<c:otherwise>
+<div class="user-login">
+<span><a href="/bhandari-interiors/logout">Logout</a></span>
+</div>
+</c:otherwise>
+</c:choose>
 
 <div class="right-nav">
 <ul>
-<li><a href="index.html">Home</a></li>
+<li><a href = "welcome">Home</a></li>
  <li><a href="about-us.html">About Us</a></li>
-<li><a href="gallery" class="current">Gallery</a></li>
+<li><a href="gallery">Gallery</a></li>
  <li><a href="gallery">Services</a></li>
  <li><a href="support.html">Support</a></li>
-  <li><a href="contactUs">Contact Us</a></li>
-  <li><a href="operations">Operations</a></li>
+  <li><a href="contact-us.html	">Contact Us</a></li>
+  <c:if test="${not empty ROLE && ROLE eq 'ROLE_ADMIN'}">
+	<li><a style="color:#FFA500;">Operations</a></li>
+</c:if> 
 </ul>
+
 </div>
 
 
