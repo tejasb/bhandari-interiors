@@ -12,6 +12,7 @@
   
   <!-- <security:intercept-url pattern="/login" access="permitAll"/> -->
   <security:intercept-url pattern="/operations" access="isAuthenticated() and hasAnyRole('ROLE_ADMIN')" />
+  <security:intercept-url pattern="/party*" access="isAuthenticated() and hasAnyRole('ROLE_ADMIN')" />
   <security:intercept-url pattern="/common" access="permitAll"/>
   <security:intercept-url pattern="/welcome" access="permitAll"/>
   <!-- <security:intercept-url pattern="/**" access="hasRole('IS_AUTHENTICATED_FULLY,ROLE_USER')" /> -->

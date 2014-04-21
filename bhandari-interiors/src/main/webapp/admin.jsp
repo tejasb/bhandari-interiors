@@ -128,22 +128,16 @@ ${error}</div>  --%>
 
 
 <div class="header">
-			<h2>Gallery</h2>
-			<ul class="gallery clearfix">
-				<li><a href="images/furnitures/slide/example-slide-1.jpg" rel="prettyPhoto[gallery1]" title="You can add caption to pictures. You can add caption to pictures. You can add caption to pictures."><img src="images/furnitures/slide/example-slide-1.jpg" width="60" height="60" alt="Red round shape" /></a></li>
-				<li><a href="images/furnitures/slide/example-slide-2.jpg" rel="prettyPhoto[gallery1]"><img src="images/furnitures/slide/example-slide-2.jpg" width="60" height="60" alt="Nice building" /></a></li>
-				<li><a href="images/furnitures/slide/example-slide-3.jpg" rel="prettyPhoto[gallery1]"><img src="images/furnitures/slide/example-slide-3.jpg" width="60" height="60" alt="Fire!" /></a></li>
-				<li><a href="images/furnitures/slide/example-slide-4.jpg" rel="prettyPhoto[gallery1]"><img src="images/furnitures/slide/example-slide-4.jpg" width="60" height="60" alt="Rock climbing" /></a></li>
-				
-			</ul>
-
-			<!-- <h2>Picture alone</h2>
-			<ul class="gallery clearfix">
-				<li><a href="images/furnitures/slide/example-slide-1.jpg" rel="prettyPhoto" title="&lt;a href=&#x27;http://www.google.ca&#x27; target=&#x27;_blank&#x27; &gt;This will open Google.com in a new window&lt;/a&gt;"><img src="images/furnitures/slide/example-slide-1.jpg" width="60" height="60" alt="Picture alone 1" /></a></li>
-			</ul>
- -->
-
-			</div>
+			<h2>Operations</h2>
+			<a href = "party?operations=addParty">Add Party</a>
+			<a href = "party?operations=viewParty">View Party</a>
+			<a href = "party?operations=searchparty">Search Party</a>
+			<a href = "party?operations=searchDue">Party Outstanding Dues</a>
+			<a href = "party?operations=viewPartyDue">Party Outstanding Dues</a>
+			<a href = "party?operations=createPartyBill">Party Billing</a>
+			
+			
+</div>
 
 <!-- Div End header-back -->
 </div>

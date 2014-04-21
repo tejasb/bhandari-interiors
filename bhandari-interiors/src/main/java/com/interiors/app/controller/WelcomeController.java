@@ -139,4 +139,12 @@ public class WelcomeController {
 	  modelAndView.setViewName("index");*/
 	  return "deniedPage";
 	 }
+	 
+	 @RequestMapping(value = "/party", method = { RequestMethod.GET, RequestMethod.POST })
+		public String partyOperations(@RequestParam (value="operation", required=false) String operation, 
+				   ModelMap model, HttpSession session)
+		{
+		 System.out.println("Inside party Operation. Operation Selected--> " + operation);
+			return operation;
+		}
 }

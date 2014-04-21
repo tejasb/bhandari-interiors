@@ -28,99 +28,13 @@
 	</bean>
 
 
-	<!-- <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
-		destroy-method="close">
-
-		<property name="driverClassName">
-			<value>com.mysql.jdbc.Driver</value>
-		</property>
-
-		<property name="url">
-			<value>jdbc:mysql://localhost/test</value>
-		</property>
-
-		<property name="username">
-			<value>admin</value>
-		</property>
-
-		<property name="password">
-			<value></value>
-		</property>
-
-	</bean>
-
-	<bean id="userDAOImpl" class="com.interiors.app.security.dao.UserDAOImpl" parent="baseDao">
-			<property name="dataSource" ref="dataSource" />
-	</bean>
-	
-	<bean id="userDetailsService" class="com.interiors.app.security.service.CustomUserDetailsService">
-		<property name="userDAO" ref="userDAOImpl" />
-	</bean>
-	
-	<bean id="baseDao" class = "com.interiors.app.security.dao.BaseDao">
-		<property name="dataSource" ref="dataSource" />
-		<property name="transactionManager" ref="transactionManager" />
-	</bean>
-	
-	<bean id="transactionManager"
-		class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
-		<property name="dataSource" ref="dataSource" />
-	</bean> -->
-	
-	<!-- <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
-		destroy-method="close">
-
-		<property name="driverClassName">
-			<value>com.mysql.jdbc.Driver</value>
-		</property>
-
-		<property name="url">
-			<value>jdbc:mysql://localhost/test</value>
-		</property>
-
-		<property name="username">
-			<value>admin</value>
-		</property>
-
-		<property name="password">
-			<value></value>
-		</property>
-
-	</bean>
-
-	<bean id="transactionManager"
-		class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
-		<property name="dataSource" ref="dataSource" />
-	</bean -->
-
-<!-- 	<bean id="baseDao" class="com.study.dao.BaseDao"
-		depends-on="dataSource" abstract="true">
-		<property name="dataSource" ref="dataSource" />
-		<property name="transactionManager" ref="transactionManager" />
-	</bean> -->
-	
-	<!-- Abstract signifies that the bean can be initialized without the class.
-	abstract bean in Spring doesn't even have to be mapped to any class
-	 -->
-	 
- 
-	<!-- <bean id="baseDao" abstract="true">
-		<property name="dataSource" ref="dataSource" />
-		<property name="transactionManager" ref="transactionManager" />
-	</bean> -->
-	
-<!-- 	<bean name="customUserDetailsService" class="com.interiors.app.security.service.CustomUserDetailsService" >
-		<property name="userDao" ref = "userDao"></property>
-	</bean> -->
-	
-	<!-- <bean id="userDaoImpl" class="com.study.dao.UserDao">
-		<property name="dataSource" ref="dataSource" />
-		<property name="transactionManager" ref="transactionManager" />
-	</bean> -->
-
-	<!-- <bean id="userDao" class="com.interiors.app.security.dao.UserDao">
-		<property name="dataSource" ref="dataSource" />
-		<property name="message" value="i'm property message" />
-	</bean> -->
+	<bean id="tilesConfigurer"
+        class="org.springframework.web.servlet.view.tiles3.TilesConfigurer">
+        <property name="definitions">
+            <list>
+                <value>/WEB-INF/tiles-definitions.xml</value>
+            </list>
+        </property>
+    </bean>
 	
 </beans>
