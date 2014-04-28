@@ -36,5 +36,27 @@
             </list>
         </property>
     </bean>
+    
+    <!-- <bean id="MenuBean" class="com.interiors.app.valueobjects.Menu">
+		<property name="label" value="Home" />
+		<property name="href" value="/welcome" />
+	</bean>
+    
+    <bean id="menu" class = "com.interiors.app.valueobjects.MenuList">
+    	<property name="menuList">
+			<list>
+				<value>1</value>
+				<ref bean="MenuBean" />
+				<bean class="com.interiors.app.valueobjects.Menu">
+					<property name="label" value="Home" />
+					<property name="href" value="/welcome" />
+				</bean>
+			</list>
+		</property>
+    </bean>  -->
+    
+   	<mvc:interceptors>
+		<bean class="com.interiors.app.interceptors.MDCInterceptor" />
+	</mvc:interceptors>
 	
 </beans>

@@ -1,8 +1,11 @@
 package com.interiors.app.controller;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 import javax.servlet.http.HttpSession;
@@ -20,6 +23,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.interiors.app.security.service.CustomUserDetailsService;
+import com.interiors.app.valueobjects.Menu;
 
 @Controller
 public class WelcomeController {
@@ -28,36 +32,50 @@ public class WelcomeController {
 	public ModelAndView welcome(ModelAndView modelAndView, HttpSession session)
 	{
 		System.out.println("Inside Controller");
-		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        String name = auth.getName();
-        if (name.equalsIgnoreCase("anonymousUser")) {
-        	//modelAndView.addObject("username", null);
-        	session.setAttribute("username", null);
-        } else {
-        	session.setAttribute("username", name);	
-        }
-      Collection<GrantedAuthority> authorities = (Collection<GrantedAuthority>) auth.getAuthorities();
-      authorities.iterator().hasNext();
-  	  for (Iterator<GrantedAuthority> authority = authorities.iterator(); authority.hasNext();){
-  	      GrantedAuthority sga = authority.next();
-  	      System.out.println("USER- ROLE -->" + sga.getAuthority());
-  	      if (sga.getAuthority().equalsIgnoreCase("ROLE_ADMIN")) {
-  	    	session.setAttribute("ROLE", "ROLE_ADMIN");
-  	    	break;
-  	      }
-  	    }
-  	  
+		System.out.println("User_role - " + session.getAttribute("ROLE"));
+    	modelAndView.addObject("PAGE", "Home");
         modelAndView.setViewName("index");
 		return modelAndView;
 	}
 	
+	
+	/*@RequestMapping(value = "/", method = { RequestMethod.GET })
+	public ModelAndView initial(ModelAndView modelAndView, HttpSession session)
+	{
+		return welcome(modelAndView, session)
+	}*/
+	
+
 	@RequestMapping(value = "/gallery", method = { RequestMethod.GET, RequestMethod.POST })
 	public ModelAndView gallery(ModelAndView modelAndView, HttpSession session)
 	{
 		System.out.println("Inside Gallery Controller");
         //modelAndView.addObject("username", session.getAttribute("username"));
         System.out.println("username - gallery" + session.getAttribute("username"));
-		modelAndView.setViewName("Gallery");
+		modelAndView.addObject("PAGE", "Gallery");
+        modelAndView.setViewName("gallery");
+		return modelAndView;
+	}
+	
+	@RequestMapping(value = "/contactUs", method = { RequestMethod.GET, RequestMethod.POST })
+	public ModelAndView contactUs(ModelAndView modelAndView, HttpSession session)
+	{
+		System.out.println("Inside Contact Us Controller");
+        //modelAndView.addObject("username", session.getAttribute("username"));
+        System.out.println("username - Contact Us" + session.getAttribute("username"));
+		modelAndView.addObject("PAGE", "Contact Us");
+        modelAndView.setViewName("contactUs");
+		return modelAndView;
+	}
+	
+	@RequestMapping(value = "/services", method = { RequestMethod.GET, RequestMethod.POST })
+	public ModelAndView services(ModelAndView modelAndView, HttpSession session)
+	{
+		System.out.println("Inside Contact Us Controller");
+        //modelAndView.addObject("username", session.getAttribute("username"));
+        System.out.println("username - Servicess" + session.getAttribute("username"));
+		modelAndView.addObject("PAGE", "Services");
+        modelAndView.setViewName("services");
 		return modelAndView;
 	}
 	
@@ -65,10 +83,9 @@ public class WelcomeController {
 	public ModelAndView operations(ModelAndView modelAndView, HttpSession session)
 	{
 		System.out.println("Inside Operations Controller");
-       // modelAndView.addObject("username", session.getAttribute("username"));
 		String username = (String) session.getAttribute("username");
         System.out.println("username - operations --> " + username);
-		
+  		modelAndView.addObject("PAGE", "Operations");
 		modelAndView.setViewName("admin");
 		return modelAndView;
 	}
@@ -79,8 +96,8 @@ public class WelcomeController {
 	  * @return the name of the JSP page
 	  */
 	 @RequestMapping(value = "/login", method = RequestMethod.GET)
-	 public String getLoginPage(@RequestParam(value="error", required=false) boolean error, 
-	   ModelMap model) {
+	 public ModelAndView getLoginPage(@RequestParam(value="error", required=false) boolean error, 
+			 ModelAndView modelAndView, HttpSession session) {
 	  //logger.debug("Received request to show login page");
 	 
 	  // Add an error message to the model if login is unsuccessful
@@ -100,30 +117,21 @@ public class WelcomeController {
 		 
 	  if (error == true) {
 	   // Assign an error message
-		  model.put("username", null);
-		  model.put("error", "You have entered an invalid username or password!");
+		  modelAndView.addObject("username", null);
+		  modelAndView.addObject("error", "You have entered an invalid username or password!");
 	  } else if (name.equalsIgnoreCase("anonymousUser")){
-		  model.put("username", null);
-		  model.put("error", "You do not have permission to access the page!!");
+		  modelAndView.addObject("username", null);
+		  modelAndView.addObject("error", "You do not have permission to access the page!!");
 	  } else {
-		  model.put("username", name);
-		  model.put("error", "");
+		  modelAndView.addObject("username", name);
+		  modelAndView.addObject("error", "");
 	  }
 	  
-	  /*authorities.iterator().hasNext();
-	  for (Iterator<GrantedAuthority> authority = authorities.iterator(); authority.hasNext();){
-	      GrantedAuthority sga = authority.next();
-	      System.out.println("USER- ROLE -->" + sga.getAuthority());
-	      if (sga.getAuthority().equalsIgnoreCase("ROLE_ADMIN")) {
-	    	  return "admin";
-	      }
-	    }*/
-	  // This will resolve to /WEB-INF/jsp/loginpage.jsp
-	  return "index";
+  		modelAndView.addObject("PAGE", "Home");
+  		modelAndView.setViewName("index");
+		return modelAndView;
 	 }
-	 
-	 
-	  
+
 	 /**
 	  * Handles and retrieves the denied JSP page. This is shown whenever a regular user
 	  * tries to access an admin only page.
@@ -135,7 +143,7 @@ public class WelcomeController {
 	  //logger.debug("Received request to show denied page");
 	   
 	  // This will resolve to /WEB-INF/jsp/deniedpage.jsp
-	  /*modelAndView.addObject("error", "You do not have sufficient privilages to access this page!!");
+	  /*modelAndView.addObject("error", "You do not have sufficient privileges to access this page!!");
 	  modelAndView.setViewName("index");*/
 	  return "deniedPage";
 	 }
@@ -144,7 +152,7 @@ public class WelcomeController {
 		public String partyOperations(@RequestParam (value="operation", required=false) String operation, 
 				   ModelMap model, HttpSession session)
 		{
-		 System.out.println("Inside party Operation. Operation Selected--> " + operation);
+		 	System.out.println("Inside party Operation. Operation Selected--> " + operation);
 			return operation;
 		}
 }

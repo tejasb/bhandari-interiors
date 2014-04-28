@@ -1,3 +1,4 @@
+<%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring" %>
@@ -5,129 +6,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 pageEncoding="UTF-8"%>
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
-<title>Bhandari Interiors</title>
-<link href="css/style.css" rel="stylesheet" type="text/css" />
-<link rel="stylesheet" href="css/slide.css" />
-<link rel="stylesheet" href="css/font-awesome.min.css" />
-<script src="js/jquery-1.9.0.min.js"></script>
- <script src="js/jquery.slides.min.js"></script>
- 
-   <script>
-    /*$(function() {
-      $('#slides').slidesjs({
-        width: 1000,
-        height: 352,
-        navigation: false
-      });
-    });*/
-    
-    $(function() {
-        $('#slides').slidesjs({
-          width: 1000,
-          height: 352,
-          play: {
-            active: true,
-            auto: true,
-            interval: 4000,
-            swap: true
-          }
-        });
-      });
-    alert("<c:out value = '${username}'></c:out>");
-  </script>
- 
-</head>
-
-<body>
-
-<div class="header-back">
-<div class="logo-head">
-<div class="logo">
-<a href="welcome"><img src="images/logo.gif" alt="" border="0" /></a>
-
-<!-- Div End Logo -->
-Welcome <c:choose> <c:when test='${not empty username}'>
-	<c:out value='${username}'></c:out>
-</c:when><c:otherwise>Guest!!</c:otherwise></c:choose>
-</div>
-
-<c:choose>
- <c:when test="${empty username}">
-<div class="user-guest">
-<%-- Login
-<div id="login-error">
- 
- 
-${error}</div>  --%>   
-<c:if test="${not empty error}">
-	<script>alert("${error}");</script>
-</c:if>
-<form action="j_spring_security_check" method="post" >
-<table>
-	<tr>
-		<td><label for="j_username">Username</label></td>
-		<td><input id="j_username" name="j_username" type="text" /></td>
-	</tr>
-	<tr>
-		<td><label for="j_password">Password</label></td>
-		<td><input id="j_password" name="j_password" type="password" /></td>
-	</tr>
-	<tr>
-		<td></td>
-		<td colspan="0" align="right"><input  type="submit" value="Login"/>  </td>
-	</tr>
-</table>
-</form>
-<!-- End Div user -->
-</div>
-</c:when>
-<c:otherwise>
-<div class="user-login">
-<span><a href="/bhandari-interiors/logout">Logout</a></span>
-</div>
-</c:otherwise>
-</c:choose>
-
-<div class="right-nav">
-<ul>
-<li><a style="color:#FFA500;">Home</a></li>
- <li><a href="about-us.html">About Us</a></li>
-<li><a href="gallery">Gallery</a></li>
- <li><a href="gallery">Services</a></li>
- <li><a href="support.html">Support</a></li>
-  <li><a href="contact-us.html	">Contact Us</a></li>
-  <c:if test="${not empty ROLE && ROLE eq 'ROLE_ADMIN'}">
-	<li><a href="operations">Operations</a></li>
-</c:if>
-</ul>
-
-</div>
+<tiles:insertDefinition name="defaultTemplate">
 
 
-<!-- Div- ENd logo-head-->
-</div>
+    <tiles:putAttribute name="body">
 
 
 <div class="header">
-
-<!-- div class="nav-bar">
-<ul>
-       <li><a class="current">Home</a></li>
-        <li><a href="about-us.html">About Us</a></li>
-        <li><a href="projects.html">Projects</a></li>
-        <li><a href="services.html">Services</a></li>
-        <li><a href="support.html">Support</a></li>
-        <li class="last"><a href="contact-us.html">Contact Us</a></li>
-</ul>
-
-
-</div> -->
-
-<!-- div class="right-header">  -->
   <div class="container">
     <div id="slides">
       <img src="images/furnitures/slide/Futuristic1.jpg" alt="Photo by: Missy S Link: http://www.flickr.com/photos/listenmissy/5087404401"></img>
@@ -140,10 +25,7 @@ ${error}</div>  --%>
       
     </div>
   </div>
-<!-- /div> -->
 
-</div>
-<!-- Div End header-back -->
 </div>
 
 
@@ -173,13 +55,10 @@ ${error}</div>  --%>
 </div>
 
 
-<div id="footer">
-<b><a href="#">Terms of Use</a> | <a href="privacy.html">Privacy Statement</a> </b>
-&copy; Bhandari Interiors. All rights reserved
-</div>
-
 </div>
 
 
-</body>
-</html>
+ 
+ 
+    </tiles:putAttribute>
+</tiles:insertDefinition>

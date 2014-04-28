@@ -11,13 +11,13 @@ pageEncoding="UTF-8"%>
     <tiles:putAttribute name="body">
  
  <div class = "header">
-   			<h2>Operations</h2>
-			<p><a href = "Party?operation=addParty">Add Party</a></br></p>
-			<p><a href = "Party?operation=viewParty">View Party</a></br></p>
-			<p><a href = "Party?operation=searchparty">Search Party</a></br></p>
-			<p><a href = "Party?operation=searchDue">Party Outstanding Dues</a></br></p>
-			<p><a href = "Party?operation=viewPartyDue">View Party Outstanding Dues Details</a></br></p>
-			<p><a href = "Party?operation=createPartyBill">Party Billing</a></br></p>
+   			<h2>Gallery</h2>
+			<ul class="gallery clearfix">
+				<li><a href="images/furnitures/slide/example-slide-1.jpg" rel="prettyPhoto[gallery1]" title="You can add caption to pictures. You can add caption to pictures. You can add caption to pictures."><img src="images/furnitures/slide/example-slide-1.jpg" width="60" height="60" alt="Red round shape" /></a></li>
+				<li><a href="images/furnitures/slide/example-slide-2.jpg" rel="prettyPhoto[gallery1]"><img src="images/furnitures/slide/example-slide-2.jpg" width="60" height="60" alt="Nice building" /></a></li>
+				<li><a href="images/furnitures/slide/example-slide-3.jpg" rel="prettyPhoto[gallery1]"><img src="images/furnitures/slide/example-slide-3.jpg" width="60" height="60" alt="Fire!" /></a></li>
+				<li><a href="images/furnitures/slide/example-slide-4.jpg" rel="prettyPhoto[gallery1]"><img src="images/furnitures/slide/example-slide-4.jpg" width="60" height="60" alt="Rock climbing" /></a></li>
+			</ul>
   </div>
 <!-- /div> -->
 

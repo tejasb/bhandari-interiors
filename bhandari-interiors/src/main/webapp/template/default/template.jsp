@@ -2,9 +2,10 @@
 <html>
     <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>Default tiles template</title>
+    <title>Bhandari Interiors</title>
     <link href="css/style.css" rel="stylesheet" type="text/css" />
 <link rel="stylesheet" href="css/slide.css" />
+<link rel="stylesheet" href="css/buttonStyle.css" />
 <link rel="stylesheet" href="css/font-awesome.min.css" />
 <script src="js/jquery-1.9.0.min.js"></script>
  <script src="js/jquery.slides.min.js"></script>
