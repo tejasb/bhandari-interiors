@@ -25,9 +25,9 @@ pageEncoding="UTF-8"%>
 	<h2>Operations</h2>
 	<a href = "Party?operation=addParty">Add Party</a></br>
 	<a href = "Party?operation=viewParty">View Party</a></br>
-	<a href = "Party?operation=searchparty">Search Party</a></br>
-	<a href = "Party?operation=searchDue">Party Outstanding Dues</a></br>
-	<a href = "Party?operation=viewPartyDue">View Party Outstanding Dues Details</a></br>
+	<a href = "Party?operation=searchParty">Search Party</a></br>
+	<a href = "Party?operation=searchOutstandingDues">Party Outstanding Dues</a></br>
+	<a href = "Party?operation=viewOutstandingDues">View Party Outstanding Dues Details</a></br>
 	<a href = "Party?operation=createPartyBill">Party Billing</a></br>
  
  

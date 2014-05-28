@@ -8,17 +8,52 @@ pageEncoding="UTF-8"%>
 
 <tiles:insertDefinition name="defaultTemplate">
 
+
     <tiles:putAttribute name="body">
  
  <div class = "header">
-   			<h2>Operations</h2>
-   			<p><a href = "Party?operation=addUser">Add User</a></br></p>
-			<p><a href = "Party?operation=addParty">Add Party</a></br></p>
-			<p><a href = "Party?operation=viewParty">View Party</a></br></p>
-			<p><a href = "Party?operation=searchParty">Search Party</a></br></p>
-			<p><a href = "Party?operation=searchOutstandingDues">Party Outstanding Dues</a></br></p>
-			<p><a href = "Party?operation=viewOutstandingDues">View Party Outstanding Dues Details</a></br></p>
-			<p><a href = "Party?operation=createPartyBill">Party Billing</a></br></p>
+  <form name="addPartyForm">
+<table width="450px"  align="center">
+</tr>
+<tr>
+ <td valign="top">
+  <label for="userName">User Name </label>
+ </td>
+ <td valign="top">
+  <input  type="text" name=""userName"" maxlength="50" size="50">
+ </td>
+</tr>
+ 
+<tr>
+ <td valign="top"">
+  <label for="partyName">Party Name</label>
+ </td>
+ <td valign="top">
+  <input  type="text" name="partyName" maxlength="50" size="50">
+ </td>
+</tr>
+<tr>
+<tr>
+ <td valign="top">
+  <label for="userRole">User Role</label>
+ </td>
+ <td valign="top">
+ <SELECT NAME="userRole" SIZE="1">
+	<OPTION SELECTED>Admin
+	<OPTION>User
+</SELECT>
+ </td>
+</tr>
+<tr>
+<td align="right">
+  <input type="submit" value="Abandon" class = "buttonCss">
+ </td>
+ <td>
+  <input type="submit" value="Save" class = "buttonCss">
+ </td>
+</tr>
+</table>
+</form>
   </div>
 <!-- /div> -->
 
@@ -46,6 +81,7 @@ pageEncoding="UTF-8"%>
 		<p> We provide all the services which cater your varied interior needs.</p>
 	</div>
  </div>
+<!-- Div End header-back -->
 
  
  

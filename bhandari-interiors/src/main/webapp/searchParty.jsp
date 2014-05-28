@@ -34,56 +34,21 @@ pageEncoding="UTF-8"%>
       
     </div> -->
 
- <form name="addPartyForm">
-<table width="450px"  align="center">
+ <form name="searchPartyForm" method = "post" action="/searchParty">
+<table width="700px"  align="center">
 </tr>
 <tr>
  <td valign="top">
-  <label for="party_name">Party Name *</label>
+  <label for="partyId">Party ID *</label>
  </td>
  <td valign="top">
-  <input  type="text" name="party_name" maxlength="50" size="50">
+  <input  type="text" name="party_id" maxlength="50" size="50">
  </td>
-</tr>
- 
-<tr>
  <td valign="top"">
-  <label for="addressLineFirst">Party Address Line1 *</label>
+  <label for="partyName">Party Name *</label>
  </td>
  <td valign="top">
-  <input  type="text" name="addressLineFirst" maxlength="50" size="50">
- </td>
-</tr>
-<tr>
- <td valign="top">
-  <label for="addressLineSecond">Party Address Line2 *</label>
- </td>
- <td valign="top">
-  <input  type="text" name="addressLineSecond" maxlength="80" size="50">
- </td>
- </tr>
- <tr>
- <td valign="top">
-  <label for="email">Email Address *</label>
- </td>
- <td valign="top">
-  <input  type="text" name="email" maxlength="80" size="30">
- </td>
-</tr>
-<tr>
- <td valign="top">
-  <label for="mobile">Party Mobile No: </label>
- </td>
- <td valign="top">
-  <input  type="text" name="mobile" maxlength="30" size="30">
- </td>
-</tr>
-<tr>
- <td valign="top">
-  <label for="telephone">Party Tel No *</label>
- </td>
- <td valign="top">
-	<input  type="text" name="telephone" maxlength="30" size="30">
+  <input  type="text" name="partyName" maxlength="50" size="50">
  </td>
 </tr>
 <tr>
@@ -97,10 +62,8 @@ pageEncoding="UTF-8"%>
 	<OPTION>Contractor
 </SELECT>
  </td>
-</tr>
-<tr>
  <td valign="top">
-  <label for="partyDetailType">Party Detail Type</label>
+  <label for="partyDetailType">Party Detail Type *</label>
  </td>
  <td valign="top">
  <SELECT NAME="partyDetailType" SIZE="1">
@@ -110,10 +73,9 @@ pageEncoding="UTF-8"%>
 </SELECT>
  </td>
 </tr>
-
 <tr>
-<td align="right">
-  <input type="submit" value="Abandon" class = "buttonCss">
+<td align="right" colspan = "2">
+  <input type="button" value="Abandon" class = "buttonCss">
  </td>
  <td>
   <input type="submit" value="Save" class = "buttonCss">
@@ -121,7 +83,19 @@ pageEncoding="UTF-8"%>
 </tr>
 </table>
 </form>
-  </div>
+
+<table id="party-data-table"  align="center">
+	<thead>
+		<tr>
+			<th>Party Id</th>
+			<th>Party name</th>
+			<th>Party Type</th>
+			<th>Party Detail Type</th>
+		</tr>
+	</thead>
+</table>
+
+</div>
   </div>
 <!-- /div> -->
 
@@ -151,6 +125,72 @@ pageEncoding="UTF-8"%>
  </div>
 <!-- Div End header-back -->
 
+<script>
+/* var data = [
+            {
+              "party_id": "1",
+              "party_name": "Sanket Sawant",
+              "party_type": "Customer",
+              "party_detail_type": "NA"
+            },
+            {
+                "party_id": "2",
+                "party_name": "Prathamesh Save",
+                "party_type": "Customer",
+                "party_detail_type": "NA"
+            }
+          ];
+
+          $('#party-data-table').simple_datagrid(
+            {
+              data: data
+            }
+          ); */
+          function searchParty() {
+	          var form = $('#searchPartyForm');
+	          //new ajaxLoader("body");
+	          $.ajax({
+	                 
+	                 url : "/bhandari-interiors/searchPartyQuery",
+	                 data : form.serialize(),
+	                 headers:headers,
+	                 type : 'post',
+	                 cache    : false,
+	                 success : function(response) {
+	              	   ResetSessionTime();
+	                        $("#ajax_loader").remove();
+	                        var jsonObject = $.parseJSON(response);
+	                        if (jsonObject.IS_ERROR == "true") {
+	                              $('#tableFieldSet').hide();
+	                              $('#viewButton').hide();
+	                              $('#printButton').hide();
+	                              $('#amendButton').hide();
+	                              $('#refreshButton').hide();
+	                              noRecordsFound();
+	                        } else {
+	                              if(jsonObject.IS_ERROR == "false"){
+	                                     $('#searchTableData').val(response);
+	                                     $('#tableFieldSet').show();
+	                                     $('#buttonFieldSet').show();
+	                                     $('#viewButton').hide();
+	                                     $('#printButton').hide();
+	                                     $('#amendButton').hide();
+	                                     $('#refreshButton').show();
+	                                     showTable(jsonObject);
+	                              }
+	                        }
+	                 },
+	                 error: function (response, e) {
+	      	   	        if (response.status == 403 || response.status == 400) {
+	      	   	            //window.location = "/origin/errorPage403";
+	      	   	        }
+	      	   	    }
+	          });
+	          
+	          var data = 
+	          $('#demo-table').simple_datagrid('loadData', data);
+          }
+</script>
  
  
     </tiles:putAttribute>

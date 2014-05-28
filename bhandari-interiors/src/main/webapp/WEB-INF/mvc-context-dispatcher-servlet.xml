@@ -14,7 +14,7 @@
 	
 	<mvc:resources mapping="/resources/**" location="/resources/" />
 	
-	<context:component-scan base-package="com.interiors.app.controller" />
+	<context:component-scan base-package="com.interiors.app" />
 	 <bean name="testManager" class="com.interiors.app.dap.mapper.TestManagerImpl" />
 	
 		<bean

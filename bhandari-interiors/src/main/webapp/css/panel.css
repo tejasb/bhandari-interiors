@@ -1,0 +1,154 @@
+
+.addFeature{
+background-image:url("../images/add_image.png");
+height:20px !important;
+width:20px;
+ margin-left: 15px;
+}
+
+.tableColumns{
+	text-align: left;
+	padding-top: 1px;
+	padding-bottom: 1px;
+	width: 370px;
+}
+
+#bodyDiv{
+	overflow: auto;
+}
+
+.panel1Div{
+ 	/* border: 1px solid;
+    width: 50%; */
+    border: 1px solid;
+	width: 530px;
+	padding-top: 30px;
+	height: 260px;
+	margin-left: 220px;
+	padding-left: 25px;
+}
+.panel2Div{
+	border: 1px solid;
+    height: 250px;
+    margin-top: 7px;
+    overflow: auto;
+    width: 96%;
+
+}
+
+.panel3Div{
+ 	border: 1px solid;
+    margin-top: 7px;
+    width: 96%;
+}
+
+.upGridDiv{
+	 margin-left: 10px;
+     margin-top: 10px;
+}
+
+.productType{
+ 	margin-left: 5px;
+    padding-top: 5px;
+}
+
+.datePickerPosition{
+margin-left: 3px;
+}
+
+.downGridDiv{
+	 margin-left: 10px;
+	margin-top : -10px;	
+}
+
+.searchImage{
+	cursor: pointer; 
+	margin-left: -20px;
+}
+
+.ie .searchImage{
+	cursor: pointer; 
+	margin-left: -40px;
+}
+
+.customerInputText{
+	width: 150px !important;
+}
+
+.lableWithRightAlign{
+	text-align:right;
+}
+
+.addFeature{
+background-image:url("../images/add_image.png");
+height:20px !important;
+width:20px;
+ margin-left: 15px;
+}
+
+.tableColumns{
+	text-align: left;
+	padding-top: 1px;
+	padding-bottom: 1px;
+	width: 370px;
+}
+
+#bodyDiv{
+	overflow: auto;
+}
+
+/* .panel1Div{
+ 	border: 1px solid;
+    width: 96%;
+} */
+.panel2Div{
+	border: 1px solid;
+    height: 250px;
+    margin-top: 7px;
+    overflow: auto;
+    width: 96%;
+
+}
+
+.panel3Div{
+ 	border: 1px solid;
+    margin-top: 7px;
+    width: 96%;
+}
+
+.upGridDiv{
+	 margin-left: 10px;
+     margin-top: 10px;
+}
+
+.productType{
+ 	margin-left: 5px;
+    padding-top: 5px;
+}
+
+.datePickerPosition{
+margin-left: 3px;
+}
+
+.downGridDiv{
+	 margin-left: 10px;
+	margin-top : -10px;	
+}
+
+.searchImage{
+	cursor: pointer; 
+	margin-left: -20px;
+}
+
+.ie .searchImage{
+	cursor: pointer; 
+	margin-left: -40px;
+}
+
+.customerInputText{
+	width: 150px !important;
+}
+
+.lableWithRightAlign{
+	text-align:right;
+}

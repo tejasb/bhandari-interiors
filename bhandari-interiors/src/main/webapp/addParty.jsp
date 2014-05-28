@@ -5,23 +5,12 @@
  <%@ page isELIgnored="false" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 pageEncoding="UTF-8"%>
+ <script src="js/com/interiors/party/partyOperation.js"></script>
 
 <tiles:insertDefinition name="defaultTemplate">
 
 
     <tiles:putAttribute name="body">
- 
- 
- 
-        <%-- <div class="body">
-            <h1>Home page !</h1>
- 
-            <p>The time on the server is ${serverTime}.</p>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore
-                magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-                Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</P>
-        </div> --%>
  <div class = "header">
    <div class="container">
     <!-- <div id="slides">
@@ -34,95 +23,96 @@ pageEncoding="UTF-8"%>
       
     </div> -->
 
- <form name="addPartyForm">
+<div id="panel-1" class="med panel1Div">
+ <form name="partyInfo" id = "partyInfo">
 <table width="450px"  align="center">
-</tr>
 <tr>
  <td valign="top">
-  <label for="party_name">Party Name *</label>
+  <label for="partyName">Party Name *</label>
  </td>
  <td valign="top">
-  <input  type="text" name="party_name" maxlength="50" size="50">
+  <input  type="text" name="partyName" maxlength="50" size="50">
  </td>
 </tr>
  
 <tr>
- <td valign="top"">
-  <label for="addressLineFirst">Party Address Line1 *</label>
+ <td valign="top">
+  <label for="partyAddressLine1">Party Address Line1 *</label>
  </td>
  <td valign="top">
-  <input  type="text" name="addressLineFirst" maxlength="50" size="50">
+  <input  type="text" name="partyAddressLine1" maxlength="50" size="50">
  </td>
 </tr>
 <tr>
  <td valign="top">
-  <label for="addressLineSecond">Party Address Line2 *</label>
+  <label for="partyAddressLine2">Party Address Line2 *</label>
  </td>
  <td valign="top">
-  <input  type="text" name="addressLineSecond" maxlength="80" size="50">
+  <input  type="text" name="partyAddressLine2" maxlength="80" size="50">
  </td>
  </tr>
  <tr>
  <td valign="top">
-  <label for="email">Email Address *</label>
+  <label for="partyEmailId">Email Address *</label>
  </td>
  <td valign="top">
-  <input  type="text" name="email" maxlength="80" size="30">
- </td>
-</tr>
-<tr>
- <td valign="top">
-  <label for="mobile">Party Mobile No: </label>
- </td>
- <td valign="top">
-  <input  type="text" name="mobile" maxlength="30" size="30">
+  <input  type="text" name="partyEmailId" maxlength="80" size="30">
  </td>
 </tr>
 <tr>
  <td valign="top">
-  <label for="telephone">Party Tel No *</label>
+  <label for="partyMobileNo">Party Mobile No: </label>
  </td>
  <td valign="top">
-	<input  type="text" name="telephone" maxlength="30" size="30">
+  <input  type="text" name="partyMobileNo" maxlength="30" size="30">
  </td>
 </tr>
 <tr>
  <td valign="top">
-  <label for="partyType">Party Type *</label>
+  <label for="partyTelNo">Party Tel No *</label>
  </td>
  <td valign="top">
- <SELECT NAME="partyType" SIZE="1">
-	<OPTION SELECTED>Customer
-	<OPTION>Supplier
-	<OPTION>Contractor
+	<input  type="text" name="partyTelNo" maxlength="30" size="30">
+ </td>
+</tr>
+<tr>
+ <td valign="top">
+  <label for="partyTypeId">Party Type *</label>
+ </td>
+ <td valign="top">
+ <SELECT NAME="partyTypeId" SIZE="1">
+	<OPTION SELECTED value="1">Customer
+	<OPTION value="2">Supplier
+	<OPTION value="3">Contractor
 </SELECT>
  </td>
 </tr>
 <tr>
  <td valign="top">
-  <label for="partyDetailType">Party Detail Type</label>
+  <label for="partyDetailTypeId">Party Detail Type</label>
  </td>
  <td valign="top">
- <SELECT NAME="partyDetailType" SIZE="1">
-	<OPTION SELECTED>Customer
-	<OPTION>Supplier
-	<OPTION>Contractor
+ <SELECT NAME="partyDetailTypeId" SIZE="1">
+	<OPTION SELECTED value="1">Customer
+	<OPTION value="2">Supplier
+	<OPTION value="3">Contractor
 </SELECT>
  </td>
 </tr>
 
 <tr>
 <td align="right">
-  <input type="submit" value="Abandon" class = "buttonCss">
+  <input type="submit" value="Abandon" class = "buttonCss" onClick = "resetFields()"/>
  </td>
  <td>
-  <input type="submit" value="Save" class = "buttonCss">
+  <input type="button" value="Save" class = "buttonCss" onclick="ajaxRequestForAddParty()"/>
  </td>
 </tr>
 </table>
 </form>
+  	</div>
   </div>
-  </div>
+</div>
 <!-- /div> -->
 
 <div id="body-part">

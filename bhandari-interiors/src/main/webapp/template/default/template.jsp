@@ -7,8 +7,11 @@
 <link rel="stylesheet" href="css/slide.css" />
 <link rel="stylesheet" href="css/buttonStyle.css" />
 <link rel="stylesheet" href="css/font-awesome.min.css" />
+<link rel="stylesheet" href="css/panel.css" />
+<link rel="stylesheet" href="css/simple.datagrid.css">
 <script src="js/jquery-1.9.0.min.js"></script>
  <script src="js/jquery.slides.min.js"></script>
+ <script src="js/simple.datagrid.js"></script>
   <script>
     $(function() {
         $('#slides').slidesjs({
