@@ -31,20 +31,22 @@ pageEncoding="UTF-8"%>
       <img src="images/furnitures/slide/example-slide-4.jpg" alt="Photo by: Stuart SeegerLink: http://www.flickr.com/photos/stuseeger/97577796"></img>
       <a href="#" class="slidesjs-previous slidesjs-navigation"><i class="icon-chevron-left icon-large"></i></a>
       <a href="#" class="slidesjs-next slidesjs-navigation"><i class="icon-chevron-right icon-large"></i></a>
-      
+      	private int partyId;
+	private String partyName;
+	private String partyTypeId;
+	private String partyDetailTypeId;
     </div> -->
 
- <form name="searchPartyForm" method = "post" action="/searchParty">
+ <form name="searchPartyForm" id = "searchPartyForm">
 <table width="700px"  align="center">
-</tr>
 <tr>
  <td valign="top">
   <label for="partyId">Party ID *</label>
  </td>
  <td valign="top">
-  <input  type="text" name="party_id" maxlength="50" size="50">
+  <input  type="text" name="partyId" maxlength="50" size="50">
  </td>
- <td valign="top"">
+ <td valign="top">
   <label for="partyName">Party Name *</label>
  </td>
  <td valign="top">
@@ -53,23 +55,23 @@ pageEncoding="UTF-8"%>
 </tr>
 <tr>
  <td valign="top">
-  <label for="partyType">Party Type *</label>
+  <label for="partyTypeId">Party Type *</label>
  </td>
  <td valign="top">
- <SELECT NAME="partyType" SIZE="1">
-	<OPTION SELECTED>Customer
-	<OPTION>Supplier
-	<OPTION>Contractor
+ <SELECT NAME="partyTypeId" SIZE="1">
+	<OPTION SELECTED value="1">Customer
+	<OPTION value="2">Supplier
+	<OPTION  value = "3">Contractor
 </SELECT>
  </td>
  <td valign="top">
-  <label for="partyDetailType">Party Detail Type *</label>
+  <label for="partyDetailTypeId">Party Detail Type *</label>
  </td>
  <td valign="top">
- <SELECT NAME="partyDetailType" SIZE="1">
-	<OPTION SELECTED>Customer
-	<OPTION>Supplier
-	<OPTION>Contractor
+ <SELECT NAME="partyDetailTypeId" SIZE="1">
+	<OPTION SELECTED value = "1">Customer
+	<OPTION  value = "2">Supplier
+	<OPTION  value = "3">Contractor
 </SELECT>
  </td>
 </tr>
@@ -78,7 +80,7 @@ pageEncoding="UTF-8"%>
   <input type="button" value="Abandon" class = "buttonCss">
  </td>
  <td>
-  <input type="submit" value="Save" class = "buttonCss">
+  <input type="button" value="Save" class = "buttonCss" onClick = "searchParty()">
  </td>
 </tr>
 </table>
@@ -150,32 +152,30 @@ pageEncoding="UTF-8"%>
 	          var form = $('#searchPartyForm');
 	          //new ajaxLoader("body");
 	          $.ajax({
-	                 
 	                 url : "/bhandari-interiors/searchPartyQuery",
 	                 data : form.serialize(),
-	                 headers:headers,
 	                 type : 'post',
 	                 cache    : false,
 	                 success : function(response) {
-	              	   ResetSessionTime();
-	                        $("#ajax_loader").remove();
 	                        var jsonObject = $.parseJSON(response);
 	                        if (jsonObject.IS_ERROR == "true") {
-	                              $('#tableFieldSet').hide();
+	                              /* $('#tableFieldSet').hide();
 	                              $('#viewButton').hide();
 	                              $('#printButton').hide();
 	                              $('#amendButton').hide();
 	                              $('#refreshButton').hide();
-	                              noRecordsFound();
+	                              noRecordsFound(); */
 	                        } else {
 	                              if(jsonObject.IS_ERROR == "false"){
-	                                     $('#searchTableData').val(response);
+	                                     /* $('#searchTableData').val(response);
 	                                     $('#tableFieldSet').show();
 	                                     $('#buttonFieldSet').show();
 	                                     $('#viewButton').hide();
 	                                     $('#printButton').hide();
 	                                     $('#amendButton').hide();
-	                                     $('#refreshButton').show();
+	                                     $('#refreshButton').show(); */
+	                       	          	 var data = jsonObject.SEARCH_DATA;
+	                       		          $('#party-data-table').simple_datagrid('loadData', data);
 	                                     showTable(jsonObject);
 	                              }
 	                        }
@@ -187,8 +187,6 @@ pageEncoding="UTF-8"%>
 	      	   	    }
 	          });
 	          
-	          var data = 
-	          $('#demo-table').simple_datagrid('loadData', data);
           }
 </script>
  

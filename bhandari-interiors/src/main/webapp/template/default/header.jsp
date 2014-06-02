@@ -66,7 +66,6 @@ ${error}</div>  --%>
 						<li><a href="${menu.value.href}"
 							<c:if test="${not empty menu.value.label && menu.value.label eq PAGE}"> style="color:#FFA500;" </c:if>><c:out
 									value="${menu.value.label}"></c:out></a></li>
-						</option>
 					</c:forEach>
 				</c:when>
 			</c:choose>

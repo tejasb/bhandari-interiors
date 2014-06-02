@@ -1,5 +1,6 @@
 package com.interiors.app.controller;
 
+import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -17,10 +18,13 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.google.gson.Gson;
 import com.interiors.app.manager.PartyManager;
 import com.interiors.app.manager.impl.PartyManagerImpl;
 import com.interiors.app.valueobjects.PartyInfo;
+import com.interiors.app.valueobjects.PartySearchInfo;
 import com.interiors.app.valueobjects.SearchPartyForm;
+import com.interiors.app.valueobjects.UserInfo;
 
 @Controller
 public class PartyController {
@@ -49,11 +53,24 @@ public class PartyController {
 	}
 	
 	@RequestMapping(value = "/addUser", method = { RequestMethod.GET, RequestMethod.POST })
-	public ModelAndView addUser(ModelAndView modelAndView, HttpSession session)
+	public @ResponseBody 
+	String addUser(@ModelAttribute UserInfo userInfo, ModelAndView modelAndView, HttpSession session)
 	{
-		
-		modelAndView.setViewName("addUser");
-		return modelAndView;
+		Integer userId = 0;
+		String jsonResponse = "";
+		try {
+			userId = partyManager.addUser(userInfo);
+		} catch (NoSuchAlgorithmException e) {
+			e.printStackTrace();
+		}
+		if (userId != null && userId != 0) {
+			jsonResponse = "{\"IS_ERROR\":\"false\",\"USER_ID\": \"" + userId
+				+ "\",\"MESSAGE\":\"User added successfully.\"}";
+		} else {
+			jsonResponse = "{\"IS_ERROR\":\"true\",\"USER_ID\": \"" + userId
+				+ "\",\"MESSAGE\":\"User cannot be created. Please try again or contact service desk\"}";
+		}
+		return jsonResponse;
 	}
 
 	
@@ -67,28 +84,49 @@ public class PartyController {
 		return modelAndView;
 	}
 	
-	
-	/*public String getPartnerSearchList(String partnerString,String orderType,String isCode,HttpSession session){
+	@RequestMapping(value = "/getPartySearchList", method = { RequestMethod.GET, RequestMethod.POST })
+	public @ResponseBody
+	String getPartySearchList(ModelAndView modelAndView, HttpSession session)
+	{
+		//return partySearchManager.getPartnerSearchList(partnerString, orderType,isCode,session);
+		int userId = 0;
+		System.out.println("Inside Party Search List and Party String is--> ");
+		String partyString = "Tejas";
+		String isCode = "false";
+	/*	return  "{\"IS_ERROR\":\"true\",\"USER_ID\": \"" + userId
+				+ "\",\"MESSAGE\":\"User cannot be created. Please try again or contact service desk\"}";*/
+		return partyManager.getPartySearchList(partyString, isCode);
 		
-		List<PartySearchInfo> partySearchInfos = new ArrayList<PartySearchInfo>();
-		OperatingParamsSearchInfo operatingParamsSearchInfo = (OperatingParamsSearchInfo) session.getAttribute("OPERATING_PARAM_SEARCH");
-		String businessUnitID = operatingParamsSearchInfo.getSelectedBusinessUnitId();
-		
-		partySearchInfos = partnerSearchDaoOPDS.getPartnerSearchListFromOPDS(partnerString, orderType,isCode,businessUnitID);
+	}
+
 	
-		List<Map<String, String>> partySearchList = new ArrayList<Map<String, String>>();
+	@RequestMapping(value = "/searchPartyQuery", method = { RequestMethod.GET, RequestMethod.POST })
+	public String getPartySearch(@ModelAttribute SearchPartyForm searchPartyForm, HttpSession session,
+			ModelAndView modelAndView)
+	{
+		/*System.out.println("Operation Selected --> " + operation);
+		modelAndView.addObject("PAGE", "Operations");
+		modelAndView.setViewName(operation);*/
+		System.out.println("Search party Form"); 
+		List<PartyInfo> partyInfoList = partyManager.searchParty(searchPartyForm);
+		/*List<Map<String, String>> partySearchList = new ArrayList<Map<String, String>>();
 		for (PartySearchInfo partySearch : partySearchInfos)
 		{
 			Map<String, String> partySearchMap = new HashMap<String, String>();
-			partySearchMap.put("code", partySearch.getPartyId());
-			partySearchMap.put("custName",partySearch.getCustomerName());
-			partySearchMap.put("status", partySearch.getDoNotTransactFlag());
+			partySearchMap.put("partyId", partySearch.getPartyId());
+			partySearchMap.put("partyName",partySearch.getPartyName());
 			partySearchList.add(partySearchMap);
-		}
+		}*/
 		Gson gson = new Gson();
-		String partySearchResponseObject = gson.toJson(partySearchList);
-		return partySearchResponseObject;
-		
-	}*/
+		String partyData = gson.toJson(partyInfoList);
+		Map<String, String> responseMap = new HashMap<String, String>();
+		responseMap.put("IS_ERROR", "false");
+		responseMap.put("SEARCH_DATA", partyData);
+		String partySearchResponseObject = gson.toJson(responseMap);
+		int userId = 0;
+		return "{\"IS_ERROR\":\"false\",\"USER_ID\": \"" + userId
+				+ "\",\"MESSAGE\":\"User cannot be created. Please try again or contact service desk\"}";
+	}
+	
 	
 }

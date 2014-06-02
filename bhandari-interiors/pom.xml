@@ -156,7 +156,11 @@
 		<version>1.5.6</version>
 	</dependency>
             
-            
+    <dependency>
+		<groupId>com.google.code.gson</groupId>
+		<artifactId>gson</artifactId>
+		<version>2.2.4</version>
+	</dependency>
 
 		<!-- <dependency> <groupId>log4j</groupId> <artifactId>log4j</artifactId> 
 			<version>1.2.15</version> </dependency> -->
@@ -193,13 +197,13 @@
 
 		<finalName>bhandari-interiors</finalName>
 	</build>
-	<repositories>
+	<!-- <repositories>
 		<repository>
 			<id>repository</id>
 			<name>repository</name>
 			<url>http://repository.apache.org/snapshots/</url>
 		</repository>
-	</repositories>
+	</repositories> -->
 
 	<!-- <profiles> <profile> <id>dev</id> <activation> <activeByDefault>true</activeByDefault> 
 		</activation> <properties> <env>dev</env> </properties> <repositories> <repository> 
