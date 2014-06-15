@@ -164,11 +164,13 @@ public class PartyManagerImpl implements PartyManager{
 		List<PartySearchInfo> partySearchInfoList = createPartySearchInfoResult(rows);
 		
 		List<Map<String, String>> partySearchList = new ArrayList<Map<String, String>>();
-		for (PartySearchInfo partySearch : partySearchInfos)
+		for (PartySearchInfo partySearch : partySearchInfoList)
 		{
 			Map<String, String> partySearchMap = new HashMap<String, String>();
 			partySearchMap.put("partyId", partySearch.getPartyId());
 			partySearchMap.put("partyName",partySearch.getPartyName());
+			partySearchMap.put("label",partySearch.getPartyName());
+			partySearchMap.put("value",partySearch.getPartyName());
 			partySearchList.add(partySearchMap);
 		}
 		Gson gson = new Gson();

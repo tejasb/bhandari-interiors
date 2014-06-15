@@ -86,7 +86,8 @@ public class PartyController {
 	
 	@RequestMapping(value = "/getPartySearchList", method = { RequestMethod.GET, RequestMethod.POST })
 	public @ResponseBody
-	String getPartySearchList(ModelAndView modelAndView, HttpSession session)
+	String getPartySearchList(ModelAndView modelAndView, HttpSession session, 
+			@RequestParam(value="term", required=true) String term)
 	{
 		//return partySearchManager.getPartnerSearchList(partnerString, orderType,isCode,session);
 		int userId = 0;
@@ -95,7 +96,10 @@ public class PartyController {
 		String isCode = "false";
 	/*	return  "{\"IS_ERROR\":\"true\",\"USER_ID\": \"" + userId
 				+ "\",\"MESSAGE\":\"User cannot be created. Please try again or contact service desk\"}";*/
-		return partyManager.getPartySearchList(partyString, isCode);
+		//return partyManager.getPartySearchList(partyString, isCode);
+		
+		return "[{'value': 'Tejas', 'label': 'Tejas', 'partyName' : 'Tejas','partyId': '1'}]";
+				
 		
 	}
 

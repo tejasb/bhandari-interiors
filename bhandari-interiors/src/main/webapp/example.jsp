@@ -6,57 +6,110 @@
   <meta charset="utf-8">
   <title>jQuery UI Autocomplete - Remote JSONP datasource</title>
   <link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
-  <script src="//code.jquery.com/jquery-1.10.2.js"></script>
-  <script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
-<!--   <link rel="stylesheet" href="/resources/demos/style.css"> -->
+  <!-- <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+  <script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script> -->
+  <script src="js/jquery-1.9.0.min.js"></script>
+  <script src="js/jquery-ui-1.10.4.custom/js/jquery-ui-1.10.4.custom.js"></script>
   <style>
-  /* .ui-autocomplete-loading {
-    background: white url('images/ui-anim_basic_16x16.gif') right center no-repeat;
-  } */
   #city { width: 25em; }
   </style>
   <script>
   $(function() {
-    function log( message ) {
-      $( "<div>" ).text( message ).prependTo( "#log" );
-      $( "#log" ).scrollTop( 0 );
-    }
- 
-    $( "#city" ).autocomplete({
-      source: function( request, response ) {
-        $.ajax({
-          url: "/bhandari-interiors/getPartySearchList",
-          dataType: "jsonp",
-          data: {
-            featureClass: "P",
-            style: "full",
-            maxRows: 12,
-            name_startsWith: request.term
-          },
-          success: function( data ) {
-            response( $.map( data.geonames, function( item ) {
-              return {
-                label: item.name + (item.adminName1 ? ", " + item.adminName1 : "") + ", " + item.countryName,
-                value: item.name
-              }
-            }));
-          }
-        });
-      },
-      minLength: 2,
-      select: function( event, ui ) {
-        log( ui.item ?
-          "Selected: " + ui.item.label :
-          "Nothing selected, input was " + this.value);
-      },
-      open: function() {
-        $( this ).removeClass( "ui-corner-all" ).addClass( "ui-corner-top" );
-      },
-      close: function() {
-        $( this ).removeClass( "ui-corner-top" ).addClass( "ui-corner-all" );
-      }
-    });
-  });
+		 var customerCodeArray = "";
+	    function log( message ) {
+	      $( "<div>" ).text( message ).prependTo( "#log" );
+	      $( "#log" ).scrollTop( 0 );
+	    }
+	    /* var availableTags = [
+	                         "ActionScript",
+	                         "AppleScript",
+	                         "Asp",
+	                         "BASIC",
+	                         "C",
+	                         "C++",
+	                         "Clojure",
+	                         "COBOL",
+	                         "ColdFusion",
+	                         "Erlang",
+	                         "Fortran",
+	                         "Groovy",
+	                         "Haskell",
+	                         "Java",
+	                         "JavaScript",
+	                         "Lisp",
+	                         "Perl",
+	                         "PHP",
+	                         "Python",
+	                         "Ruby",
+	                         "Scala",
+	                         "Scheme"
+	                       ]; */
+   	var availableTags =   [
+   	                                     {
+  	                                      value: "Tejas",
+   	                                      label: "Tejas",
+   	                                      partyName: "Tejas",
+   	                                      partyId: "1"
+   	                                    },
+   	                                    {
+    	                                      value: "Tejas",
+       	                                      label: "Tejas",
+       	                                      partyName: "Tejas",
+       	                                      partyId: "1"
+   	                                    },
+   	                                    {
+    	                                      value: "Tejas",
+       	                                      label: "Tejas",
+       	                                      partyName: "Tejas",
+       	                                      partyId: "1"
+   	                                    }
+   	                                  ];
+	 
+	    /* $( "#city" ).autocomplete({
+	      source: function( request, response ) {
+	        $.ajax({
+	          url: "/bhandari-interiors/getPartySearchList",
+	          dataType: "jsonp",
+	          async:false,
+	          data: {
+	            featureClass: "P"
+	          },
+	          success: function( data ) {
+	            response( $.map( data, function( item ) {
+	              return {
+	                label: item.partyName + (item.partyId ? ", " + item.partyId : "") + ", " + item.partyId,
+	                value: item.partyName
+	              }
+	            }));
+	          }
+	        });
+	      },
+	      
+	      open: function() {
+	        $( this ).removeClass( "ui-corner-all" ).addClass( "ui-corner-top" );
+	      },
+	      close: function() {
+	        $( this ).removeClass( "ui-corner-top" ).addClass( "ui-corner-all" );
+	      } 
+	    }); */
+	    
+	    $( "#city" ).autocomplete({
+	        source: "/bhandari-interiors/getPartySearchList",
+	       //source: availableTags,
+	        minLength: 2,
+	        select: function( event, ui ) {
+	          log( ui.item ?
+	            "Selected: " + ui.item.partyId + " aka " + ui.item.partyName :
+	            "Nothing selected, input was " + this.value );
+	          return false;
+	        }
+	      }).data("ui-autocomplete")._renderItem = function(ul, item) {
+			return $( "<li>" )
+	        .append( "<a>" + item.partyId + "<br>" + item.partyName + "</a>" )
+	        .appendTo( ul );
+
+		};
+	  });
   </script>
 </head>
 <body>

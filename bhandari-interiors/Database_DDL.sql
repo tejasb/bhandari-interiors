@@ -1,3 +1,8 @@
+CREATE database bi;
+
+use bi;
+
+
 CREATE TABLE `party_detail_type_lu` (
   `PK_PARTY_DETAIL_TYPE_ID` int(11) NOT NULL AUTO_INCREMENT,
   `PARTY_DETAIL_TYPE_NAME` varchar(50) DEFAULT NULL,
